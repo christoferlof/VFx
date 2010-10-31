@@ -1,6 +1,7 @@
 *resharper.user
 [Dd]ebug/
 [Rr]elease/
+IntegrationTest/
 build/
 [Bb]in/
 [Oo]bj/

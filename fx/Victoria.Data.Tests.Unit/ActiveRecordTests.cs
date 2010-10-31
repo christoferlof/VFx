@@ -1,5 +1,6 @@
 using System.IO;
 using System.IO.IsolatedStorage;
+using System.Runtime.Serialization;
 using Victoria.Data;
 using Victoria.Test;
 
@@ -11,7 +12,15 @@ namespace Driverslog.Tests.Unit.Models {
             FakeRecord.SaveChanges();
         }
 
-        public class FakeRecord : ActiveRecord<FakeRecord> { }
+        
+        public class FakeRecord : ActiveRecord<FakeRecord> {
+            
+            public bool Saved {get;set;}
+
+            public override void OnSaveChanges() {
+                Saved = true;
+            }
+        }
 
         [Fact]
         public void should_persist_on_save_changes() {
@@ -45,11 +54,21 @@ namespace Driverslog.Tests.Unit.Models {
         public void should_serialize_unit_of_work_to_isostore() {
             FakeRecord.SaveChanges(); //should create file
 
-            var file = IsolatedStorageFile
+            using (var file = IsolatedStorageFile
                 .GetUserStoreForApplication()
-                .OpenFile("fakerecords.json",FileMode.Open);
+                .OpenFile("fakerecords.json", FileMode.Open)) { 
             
-            Assert.True(file is IsolatedStorageFileStream);
+                Assert.True(file is IsolatedStorageFileStream);
+            }
+        }
+
+        [Fact]
+        public void should_call_onsave_on_record_when_saving_changes() {
+            var record = new FakeRecord();
+            FakeRecord.Add(record);
+            FakeRecord.SaveChanges();
+
+            Assert.True(record.Saved);
         }
     }
 }

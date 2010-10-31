@@ -12,6 +12,7 @@ task default -depends Test
 
 task Test -depends Compile, Clean { 
   @(
+    'TodoApp*.dll',
     'Victoria*.dll',
     'System.Xml.Linq.dll',
     'System.Windows.Interactivity.dll',

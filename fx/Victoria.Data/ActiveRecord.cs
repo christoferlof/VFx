@@ -24,8 +24,9 @@ namespace Victoria.Data {
 
         public static void SaveChanges() {
             var data = new DataContainer<TRecord>();
-            foreach (var trip in All) {
-                data.Records.Add(trip);
+            foreach (var record in All) {
+                record.OnSaveChanges();
+                data.Records.Add(record);
             }
             WriteObject(data);
         }
@@ -69,6 +70,8 @@ namespace Victoria.Data {
             var serializer = GetSerializer();
             return serializer.ReadObject(file) as DataContainer<TRecord>;
         }
+
+        public virtual void OnSaveChanges() {}
 
     }
 }
