@@ -19,7 +19,7 @@
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>Victoria.Test.Runner.xap</XapFilename>
+    <XapFilename>TestRunner.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
     <SilverlightAppEntry>Victoria.Test.Runner.App</SilverlightAppEntry>
     <TestPageFileName>SilverlightApplication1TestPage.html</TestPageFileName>

@@ -4,7 +4,7 @@ properties {
   $toolsdir   = "$basedir\tools"
   $packagedir = "$toolsdir\Package"
   $xapdir     = "$toolsdir\Content\ClientBin"
-  $slnfile    = "$basedir\Driverslog.sln"
+  $slnfile    = "$basedir\VFx.sln"
   
 }
 
@@ -12,7 +12,6 @@ task default -depends Test
 
 task Test -depends Compile, Clean { 
   @(
-    'Driverslog*.dll',
     'Victoria*.dll',
     'System.Xml.Linq.dll',
     'System.Windows.Interactivity.dll',
