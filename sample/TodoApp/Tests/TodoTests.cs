@@ -16,13 +16,10 @@ namespace TodoApp.Tests {
         [Fact]
         public void should_create_todo() {
             Page("/Create.xaml").Ready(page => {
-            
-                page.Find<TextBox>("Title").SetText("New Todo");
-
-                page.Find<Button>("TheButton").Click();
-
-                page.Find<TextBox>("Id").WaitForText(s =>
-                    Assert.True(!string.IsNullOrEmpty(s)));
+                page.Find<TextBox>("TitleTextBox").SetText("New Todo");
+                page.Find<Button>("CreateTodoButton").Click();
+                page.Find<TextBox>("IdTextBox").WaitForText(text =>
+                Assert.True(!string.IsNullOrEmpty(text)) ); 
             });
         }
     }

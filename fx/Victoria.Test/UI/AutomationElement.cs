@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using System.Windows.Controls;
@@ -20,9 +21,9 @@ namespace Victoria.Test.UI {
             _waitForTextAction = (s, e) => {
                 textbox.TextChanged -= _waitForTextAction;
                 action(textbox.Text);
+                
             };
             textbox.TextChanged += _waitForTextAction;
-
         }
 
         public void Click() {

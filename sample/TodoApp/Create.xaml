@@ -28,9 +28,9 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Button x:Name="TheButton" Click="CreateTodo_Click" Content="Create Todo" Height="72" HorizontalAlignment="Left" Margin="12,88,0,0"  VerticalAlignment="Top" Width="211" />
-            <TextBox x:Name="Title" Text="{Binding Title, Mode=TwoWay}" Height="72"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="460" />
-            <TextBox x:Name="Id" Text="{Binding Id, Mode=TwoWay}" Height="63" HorizontalAlignment="Left" Margin="12,182,0,0" VerticalAlignment="Top" Width="438" />
+            <Button x:Name="CreateTodoButton" Click="CreateTodo_Click" Content="Create Todo" Height="72" HorizontalAlignment="Left" Margin="12,88,0,0"  VerticalAlignment="Top" Width="211" />
+            <TextBox x:Name="TitleTextBox" Text="{Binding Title, Mode=TwoWay}" Height="72"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="440" />
+            <TextBox x:Name="IdTextBox" Text="{Binding Id, Mode=TwoWay}" Height="74" HorizontalAlignment="Left" Margin="12,166,0,0" VerticalAlignment="Top" Width="438" />
         </Grid>
     </Grid>
 
