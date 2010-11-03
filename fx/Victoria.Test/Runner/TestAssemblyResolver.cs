@@ -7,6 +7,14 @@ using System.Windows.Resources;
 using System.Xml.Linq;
 
 namespace Victoria.Test.Runner {
+
+    public interface IAssemblyResolver {
+        IEnumerable<string> GetTestAssemblies();
+    }
+
+    /// <summary>
+    /// Resolves the available test assemblies by looking in the generated silverlight manifest
+    /// </summary>
     public class TestAssemblyResolver : IAssemblyResolver {
         
         private readonly string _manifest;
@@ -24,6 +32,21 @@ namespace Victoria.Test.Runner {
                                  select a.Attribute(Xns + "Name").Value;
 
             return testAssemblies.ToList();
+        }
+    }
+
+    /// <summary>
+    /// Resolves the available test assembly by the given type
+    /// </summary>
+    public class StaticAssemblyResolver : IAssemblyResolver {
+        private readonly Type _entryType;
+
+        public StaticAssemblyResolver(Type entryType) {
+            _entryType = entryType;
+        }
+
+        public IEnumerable<string> GetTestAssemblies() {
+            return new[] { _entryType.Assembly.FullName };
         }
     }
 }
