@@ -6,12 +6,12 @@ using System.Windows.Markup;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WindowsPhoneClassLibrary1")]
+[assembly: AssemblyTitle("Victoria.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WindowsPhoneClassLibrary1")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyProduct("Victoria.Test")]
+[assembly: AssemblyCopyright("Copyright © Christofer Löf 2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

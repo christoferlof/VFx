@@ -4,8 +4,8 @@ using System.Windows;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using TodoApp.ViewModels;
 using Victoria.Test.Runner;
-using WindowsPhoneDataBoundApplication1;
 
 namespace TodoApp {
     public partial class App : Application {
@@ -57,21 +57,6 @@ namespace TodoApp {
             // Phone-specific initialization
             InitializePhoneApplication();
 
-#if INTEGRATIONTEST
-            RunIntegrationTests();
-#endif
-
-        }
-
-        private void RunIntegrationTests() {
-            var runner = new TestRunner(
-                new TestMethodResolver(
-                    new StaticAssemblyResolver(GetType())),
-                    new DebugOutputWriter(),
-                    new UITestClassInstanceProvider(RootFrame)
-            );
-
-            ThreadPool.QueueUserWorkItem((d) => runner.Execute(string.Empty)); //execute all tests
         }
 
         // Code to execute when the application is launching (eg, from Start)
@@ -82,10 +67,6 @@ namespace TodoApp {
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e) {
-            // Ensure that application state is restored appropriately
-            if (!App.ViewModel.IsDataLoaded) {
-                App.ViewModel.LoadData();
-            }
         }
 
         // Code to execute when the application is deactivated (sent to background)
@@ -137,7 +118,7 @@ namespace TodoApp {
             phoneApplicationInitialized = true;
         }
 
-        // Do not add any additional code to this method
+        // Do not add any additional code to this method - ok but, right now I need to.. 
         private void CompleteInitializePhoneApplication(object sender, NavigationEventArgs e) {
             // Set the root visual to allow the application to render
             if (RootVisual != RootFrame)
@@ -146,7 +127,19 @@ namespace TodoApp {
             // Remove this handler since it is no longer needed
             RootFrame.Navigated -= CompleteInitializePhoneApplication;
 
+#if INTEGRATIONTEST
+            RunIntegrationTests();
+#endif
+        }
 
+        private void RunIntegrationTests() {
+            var runner = new TestRunner(
+                new TestMethodResolver(new StaticAssemblyResolver(GetType())),
+                new DebugOutputWriter(),
+                new UITestClassInstanceProvider(RootFrame)
+            );
+
+            ThreadPool.QueueUserWorkItem((d) => runner.Execute(string.Empty)); //execute all tests
         }
 
         #endregion

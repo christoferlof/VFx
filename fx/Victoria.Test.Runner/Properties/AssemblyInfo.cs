@@ -6,12 +6,12 @@ using System.Windows.Markup;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SilverlightApplication1")]
+[assembly: AssemblyTitle("Victoria.Test.Runner")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("SilverlightApplication1")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2010")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Victoria.Test.Runner")]
+[assembly: AssemblyCopyright("Copyright © Christofer Löf 2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -34,6 +34,3 @@ using System.Windows.Markup;
 // by using the '*' as shown below:
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
-[assembly: XmlnsDefinition("urn:Victoria.Test", "Victoria.Test.Runner", AssemblyName = "Victoria.Test.Tests.Unit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")]
-

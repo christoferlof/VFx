@@ -14,9 +14,7 @@ task Test -depends Compile, Clean {
   @(
     'TodoApp*.dll',
     'Victoria*.dll',
-    'System.Xml.Linq.dll',
-    'System.Windows.Interactivity.dll',
-    'Caliburn.Micro.dll'
+    'System.Xml.Linq.dll'
   ) | foreach { copy-item $builddir\$_ $packagedir }
   
   $env:path = "$toolsdir;$env:path"

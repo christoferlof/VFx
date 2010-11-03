@@ -1,0 +1,16 @@
+﻿<ViewModels:MainViewModel
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:TodoApp.Models" 
+    xmlns:ViewModels="clr-namespace:TodoApp.ViewModels">
+
+  <ViewModels:MainViewModel.Items>
+    <local:TodoItem Id="78DFA7F3-6A4A-408D-937D-3719B6542D49" Title="design one" />
+    <local:TodoItem Id="EC58B2F1-81BC-49D8-8A2E-FB7CF1246D38" Title="design two" />
+    <local:TodoItem Id="BE0A9A84-D502-4425-A85C-B0521D20A89D" Title="design three" />
+    <local:TodoItem Id="9C3387CC-4EE1-42C9-A43E-849D02448998" Title="design four" />
+    <local:TodoItem Id="B80FE3EA-4CC3-4766-B788-30120C90CF4A" Title="design five" />
+    <local:TodoItem Id="E23BB7B1-12A7-4F31-B8AE-EB0F6417937F" Title="design six" />
+  </ViewModels:MainViewModel.Items>
+
+</ViewModels:MainViewModel>
