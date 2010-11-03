@@ -57,9 +57,9 @@ namespace TodoApp {
             // Phone-specific initialization
             InitializePhoneApplication();
 
-            #if INTEGRATIONTEST
+#if INTEGRATIONTEST
             RunIntegrationTests();
-            #endif
+#endif
 
         }
 
@@ -68,7 +68,7 @@ namespace TodoApp {
                 new TestMethodResolver(
                     new StaticAssemblyResolver(GetType())),
                     new DebugOutputWriter(),
-                    new UITestClassInstanceProvider((PhoneApplicationFrame)Application.Current.RootVisual)
+                    new UITestClassInstanceProvider(RootFrame)
             );
 
             ThreadPool.QueueUserWorkItem((d) => runner.Execute(string.Empty)); //execute all tests
@@ -145,6 +145,8 @@ namespace TodoApp {
 
             // Remove this handler since it is no longer needed
             RootFrame.Navigated -= CompleteInitializePhoneApplication;
+
+
         }
 
         #endregion
