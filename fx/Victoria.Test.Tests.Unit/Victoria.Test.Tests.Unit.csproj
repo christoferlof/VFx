@@ -57,16 +57,12 @@
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Caliburn.Micro">
-      <HintPath>..\..\lib\Caliburn.Micro.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="mscorlib" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Interactivity, Version=3.7.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Net" />
   </ItemGroup>
@@ -80,7 +76,6 @@
     <Compile Include="Runner\TestMethodResolverTests.cs" />
     <Compile Include="Runner\TestRunnerTests.cs" />
     <Compile Include="Runner\WorkItemTests.cs" />
-    <Compile Include="UI\AutomationPageTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Victoria.Test\Victoria.Test.csproj">

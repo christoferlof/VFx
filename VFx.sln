@@ -3,12 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fx", "fx", "{30587D2A-37C6-4179-9466-5E1BFEAF3250}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{E94BF9F6-18FE-4B47-903A-5A5BBCDB181F}"
-	ProjectSection(SolutionItems) = preProject
-		lib\Caliburn.Micro.dll = lib\Caliburn.Micro.dll
-		lib\System.Windows.Interactivity.dll = lib\System.Windows.Interactivity.dll
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Victoria.Data", "fx\Victoria.Data\Victoria.Data.csproj", "{3D81EAB0-78FB-4D96-AFD4-767E661E9A6B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A4C897CA-E509-4995-99CD-48E079F538F4}"
