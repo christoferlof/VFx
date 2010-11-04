@@ -86,10 +86,8 @@
     <Compile Include="IntegrationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Exceptions\TrueException.cs" />
-    <Compile Include="Runner\IAssemblyResolver.cs" />
     <Compile Include="Runner\MemberInfoExtensions.cs" />
     <Compile Include="Runner\OutputWriter.cs" />
-    <Compile Include="Runner\StaticAssemblyResolver.cs" />
     <Compile Include="Runner\TestAssemblyResolver.cs" />
     <Compile Include="Runner\TestClassInstanceProvider.cs" />
     <Compile Include="Runner\TestMethodResolver.cs" />
