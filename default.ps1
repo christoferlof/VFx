@@ -3,12 +3,13 @@ properties {
   $builddir   = "$basedir\build"
   $toolsdir   = "$basedir\tools"
   $packagedir = "$toolsdir\Package"
-  $xapdir     = "$toolsdir\Content\ClientBin"
+  $contentdir = "$toolsdir\Content"
+  $xapdir     = "$contentdir\ClientBin"
   $slnfile    = "$basedir\VFx.sln"
   
 }
 
-task default -depends Test
+task default -depends ?
 
 task Test -depends Compile, Clean { 
   @(
@@ -21,16 +22,39 @@ task Test -depends Compile, Clean {
   exec {Victoria.Test.Console.exe $testpath} "Testrun failed"
 }
 
+task Setup -depends Clean -description "Setups the VFx dev environment" {
+  #create directories
+  @($builddir, $toolsdir, $packagedir, $xapdir) | foreach {
+    if((test-path -path $_) -ne $true){
+      new-item $_ -itemtype directory
+    }
+  }
+  
+  #compile
+  compile-solution
+  
+  #copy tools
+  copy-item "$builddir\Victoria.Test.Console.exe" $toolsdir
+  copy-item "$builddir\Content\RunnerPage.html" $contentdir
+  copy-item "$builddir\Content\Silverlight.js" $contentdir
+}
+
 task Compile -depends Clean { 
-  exec {msbuild "$slnfile" /p:Configuration=Debug  "/p:OutDir=$builddir\" /Verbosity:Quiet /nologo}
+  compile-solution
 }
 
 task Clean { 
   @($builddir, $packagedir, $xapdir) | foreach {
-    get-childitem $_ -recurse | remove-item -recurse
+    if((test-path -path $_) -eq $true) {
+      get-childitem $_ -recurse | remove-item -recurse
+    }
   }
 }
 
 task ? -Description "Helper to display task info" {
 	Write-Documentation
+}
+
+function compile-solution {
+  exec {msbuild "$slnfile" /p:Configuration=Debug  "/p:OutDir=$builddir\" /Verbosity:Quiet /nologo}
 }
