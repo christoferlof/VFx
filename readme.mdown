@@ -1,0 +1,59 @@
+The Victoria Framework
+======================
+
+The Victoria Framework is a simple Unit and Integration testing framework for Windows Phone 7 Silverlight development. In addition it contains support for simple object persistence to the Isolated Storage.
+
+The Unit Tests are executed in the Silverlight runtime on your dev machine without the need to deploy to the device or to the emulator. This makes it easier to adapt a test first development approach for your models and view models due to shorter test execution times. 
+
+The Integration Tests (or UI tests) are executed on the device or in the emulator. The goal is to drive the UI using the Silverlight Automation APIs. Currently this feature is very immature and needs some more work. There's a simple sample though illustrating the intent. 
+
+Installing
+==========
+1. Clone this repo.
+2. Run the setup task to create the required directories and compile the console runner. `.\psake.ps1 -task "setup"`
+3. Run the unit tests. `.\psake.ps1 -task "test"`
+
+Running the samples
+===================
+* By installing VFx using the above instructions you actually already have run the first sample; unit tests. Have a closer look at the tests in the *Tests.Unit projects within the solution.
+* To run the UI test sample; open the solution in Visual Studio. Make sure that TodoApp is set as the startup project. Start the debugger and deploy to the emulator. Watch the debug output - you should have one passing test.
+
+###Integration test sample output
+
+    Passed TodoTests.should_create_todo 
+    
+    Testrun succeeded. 
+    1 tests passed
+    0 tests failed
+
+Examples
+========
+###Unit Test
+This example also shows the simple, _active record_ styled, data access support.
+
+    [Fact]
+    public void should_set_id_on_save() {
+            
+      var item = new TodoItem();
+    
+      TodoItem.Add(item);
+      TodoItem.SaveChanges();
+
+      Assert.True(!string.IsNullOrEmpty(item.Id));
+    }
+
+###Integration Test (UI Test)
+
+    [Fact]
+    public void should_create_todo() {
+      Page("/CreatePage.xaml").Ready(page => {
+        page.Find<TextBox>("TitleTextBox").SetText("New Todo");
+        page.Find<Button>("CreateButton").Click();
+        page.Find<TextBox>("IdTextBox").WaitForText(text => 
+        Assert.True(!string.IsNullOrEmpty(text)));
+        });
+    }
+
+Learn more
+==========
+[christoferlof.com](http://christoferlof.com)
