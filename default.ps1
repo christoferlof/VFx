@@ -37,6 +37,9 @@ task Setup -depends Clean -description "Setups the VFx dev environment" {
   copy-item "$builddir\Victoria.Test.Console.exe" $toolsdir
   copy-item "$builddir\Content\RunnerPage.html" $contentdir
   copy-item "$builddir\Content\Silverlight.js" $contentdir
+  
+  write-host ""
+  write-host "Setup complete. Run '.\psake.ps1 -task ""test""' to run all unit tests" -foregroundcolor yellow
 }
 
 task Compile -depends Clean { 
